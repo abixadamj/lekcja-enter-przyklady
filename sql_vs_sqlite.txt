@@ -1,0 +1,45 @@
+SQL:
+
+CREATE TABLE `Users` (
+  `ID` int(11) NOT NULL,
+  `Imie` text NOT NULL,
+  `Nazwisko` text NOT NULL,
+  `Password` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `Users`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `nazwisko` (`Nazwisko`(768));
+
+ALTER TABLE `Users`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+
+Sqlite:
+
+BEGIN TRANSACTION;
+CREATE TABLE IF NOT EXISTS "Users" (
+	"ID"	INTEGER PRIMARY KEY AUTOINCREMENT,
+	"Imie"	TEXT NOT NULL,
+	"Nazwisko"	TEXT NOT NULL,
+	"Password"	TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS "Nazwiska" ON "Users" (
+	"Nazwisko"	ASC
+);
+COMMIT;
+
+####### Dodanie rekordu:
+INSERT INTO `Users` (`ID`, `Imie`, `Nazwisko`, `Password`) VALUES (NULL, 'Adam', 'Jurkiewicz', 'fasdfasdfasdfasd') 
+INSERT INTO `Users` (`ID`, `Imie`, `Nazwisko`, `Password`) VALUES (NULL, 'Bartek', 'Kozłowski', 'dfafsdfasdfasdfdsaf') 
+
+####### Wyszukanie rekordów:
+SELECT * FROM `Users` WHERE `Nazwisko` = "Jurkiewicz"
+
+###### Aktualizacja
+UPDATE `Users` SET `Nazwisko` = 'Adamski', `Password` = '5234523452345234' WHERE `Users`.`ID` = 2; 
+
+
+
+
