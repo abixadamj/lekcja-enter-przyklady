@@ -5,5 +5,4 @@ CREATE TABLE IF NOT EXISTS "Hasla" (
 	"Username"	TEXT NOT NULL UNIQUE,
 	"Password"	TEXT NOT NULL
 );
-INSERT INTO "Hasla" ("ID","Username","Password") VALUES (1,'adasiek','12345');
 COMMIT;
